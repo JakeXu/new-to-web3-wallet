@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { Box, Button, Divider, Flex, Heading } from '@chakra-ui/react'
-import { useAccount, useChainId, useConfig, useBlock } from 'wagmi'
-import ReactJson from 'react-json-view'
+import { useAccount, useBlock } from 'wagmi'
 import { Status, Address, Chain as C1, Balance, BlockNumber, TransferCard, SignCard } from './components'
 
 import styles from './Card.module.css'
+
+const ReactJson = dynamic(() => import('react-json-view'), { ssr: false })
 
 const Card = () => {
   const [shown, setShown] = useState(false)
