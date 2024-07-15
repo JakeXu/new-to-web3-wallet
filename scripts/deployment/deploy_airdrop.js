@@ -2,7 +2,7 @@ import hre from 'hardhat'
 import { updateEnv } from '../utils.js'
 
 async function main() {
-  const jakTokenAddress = process.env[`${hre.network.name.toUpperCase()}_JAK_TOKEN`]
+  const jakTokenAddress = process.env[`NEXT_PUBLIC_${hre.network.name.toUpperCase()}_JAK_TOKEN`]
   console.log('JAKToken Address: ', jakTokenAddress)
 
   const AirdropFactory = await hre.ethers.getContractFactory('Airdrop')
@@ -11,7 +11,7 @@ async function main() {
   const address = await Airdrop.getAddress()
   console.log('Airdrop deployed to: ', address)
 
-  updateEnv(`${hre.network.name.toUpperCase()}_AIRDROP`, address)
+  updateEnv(`NEXT_PUBLIC_${hre.network.name.toUpperCase()}_AIRDROP`, address)
   // send JAK token to airdrop contract
   const JAKToken = await hre.ethers.getContractAt('JAKToken', jakTokenAddress)
   let tx = await JAKToken.transfer(address, hre.ethers.parseEther('10000'))

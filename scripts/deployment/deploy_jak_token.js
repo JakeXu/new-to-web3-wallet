@@ -13,7 +13,7 @@ async function main() {
   const address = await JAKToken.getAddress()
   console.log('JAK deployed to: ', address)
 
-  updateEnv(`${hre.network.name.toUpperCase()}_JAK_TOKEN`, address)
+  updateEnv(`NEXT_PUBLIC_${hre.network.name.toUpperCase()}_JAK_TOKEN`, address)
 }
 
 main()

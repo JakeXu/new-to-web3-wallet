@@ -4,7 +4,7 @@ import { updateEnv } from '../utils.js'
 async function main() {
   const RPS = '1'
   const startTS = 1752203471
-  const jakTokenAddress = process.env[`${hre.network.name.toUpperCase()}_JAK_TOKEN`]
+  const jakTokenAddress = process.env[`NEXT_PUBLIC_${hre.network.name.toUpperCase()}_JAK_TOKEN`]
   console.log('JAKToken Address: ', jakTokenAddress)
 
   const FarmingJAKFactory = await hre.ethers.getContractFactory('FarmingJAK')
@@ -13,7 +13,7 @@ async function main() {
   const address = await FarmingJAK.getAddress()
   console.log('Farm deployed to: ', address)
 
-  updateEnv(`${hre.network.name.toUpperCase()}_FARMING_JAK`, address)
+  updateEnv(`NEXT_PUBLIC_${hre.network.name.toUpperCase()}_FARMING_JAK`, address)
 
   // fund the farm
   // approve the farm to spend the token

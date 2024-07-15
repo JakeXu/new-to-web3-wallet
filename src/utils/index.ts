@@ -1,3 +1,6 @@
+import { createWalletClient, custom } from 'viem'
+import { sepolia } from 'viem/chains'
+
 export const getEllipsisWords = (str: `0x${string}`, n: number = 6): string => {
   if (str) {
     return `${str.slice(0, n)}...${str.slice(str.length - n)}`
@@ -16,3 +19,13 @@ export const getTransport = (chainId: number, transports: any) => {
   if (!transport) throw new Error(`无法找到链ID为 ${chainId} 的传输方式`)
   return transport
 }
+
+export const walletClient4Sepolia =
+  typeof window !== 'undefined'
+    ? window.ethereum
+      ? createWalletClient({
+          chain: sepolia,
+          transport: custom(window.ethereum)
+        })
+      : null
+    : null
