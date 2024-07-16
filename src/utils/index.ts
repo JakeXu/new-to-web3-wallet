@@ -1,5 +1,7 @@
-import { createWalletClient, custom } from 'viem'
+import { createWalletClient, custom, parseUnits as viemParseUnits } from 'viem'
 import { sepolia } from 'viem/chains'
+
+export const parseUnits = (ether: string, unit: number = 18) => viemParseUnits(ether, unit)
 
 export const getEllipsisWords = (str: `0x${string}`, n: number = 6): string => {
   if (str) {
