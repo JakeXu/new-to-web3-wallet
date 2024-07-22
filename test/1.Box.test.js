@@ -16,6 +16,8 @@ describe('Box', function () {
 
     await box.store(100)
     expect(await box.retrieve()).to.equal(BigInt('100'))
+
+    await expect(box.store(100)).to.emit(box, 'ValueChanged').withArgs(100)
   })
 })
 

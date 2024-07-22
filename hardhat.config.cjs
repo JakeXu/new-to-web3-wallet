@@ -1,8 +1,10 @@
 require('dotenv').config()
-require('@nomiclabs/hardhat-waffle')
 require('@nomiclabs/hardhat-ethers')
 require('@nomiclabs/hardhat-web3')
 require('@openzeppelin/hardhat-upgrades')
+require('@nomicfoundation/hardhat-chai-matchers')
+// https://hardhat.org/hardhat-chai-matchers/docs/migrate-from-waffle
+// https://hardhat.org/hardhat-chai-matchers/docs/overview
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
