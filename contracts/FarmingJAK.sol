@@ -58,17 +58,9 @@ contract FarmingJAK is Ownable {
 
     event Deposit(address indexed user, uint256 indexed pid, uint256 amount);
     event Withdraw(address indexed user, uint256 indexed pid, uint256 amount);
-    event EmergencyWithdraw(
-        address indexed user,
-        uint256 indexed pid,
-        uint256 amount
-    );
+    event EmergencyWithdraw(address indexed user, uint256 indexed pid, uint256 amount);
 
-    constructor(
-        IERC20 _erc20,
-        uint256 _rewardPerSecond,
-        uint256 _startTimestamp
-    ) Ownable(_msgSender()) {
+    constructor(IERC20 _erc20, uint256 _rewardPerSecond, uint256 _startTimestamp) Ownable(_msgSender()) {
         erc20 = _erc20;
         rewardPerSecond = _rewardPerSecond;
         startTimestamp = _startTimestamp;
@@ -82,10 +74,7 @@ contract FarmingJAK is Ownable {
 
     // Fund the farm, increase the end block
     function fund(uint256 _amount) public {
-        require(
-            block.timestamp < endTimestamp,
-            "fund: too late, the farm is closed"
-        );
+        require(block.timestamp < endTimestamp, "fund: too late, the farm is closed");
         erc20.safeTransferFrom(address(msg.sender), address(this), _amount);
         endTimestamp += _amount / rewardPerSecond;
         totalRewards += _amount;
@@ -93,11 +82,7 @@ contract FarmingJAK is Ownable {
 
     // Add a new lp to the pool. Can only be called by the owner.
     // DO NOT add the same LP token more than once. Rewards will be messed up if you do.
-    function add(
-        uint256 _allocPoint,
-        IERC20 _lpToken,
-        bool _withUpdate
-    ) public onlyOwner {
+    function add(uint256 _allocPoint, IERC20 _lpToken, bool _withUpdate) public onlyOwner {
         if (_withUpdate) {
             massUpdatePools();
         }
@@ -115,11 +100,7 @@ contract FarmingJAK is Ownable {
     }
 
     // Update the given pool's ERC20 allocation point. Can only be called by the owner.
-    function set(
-        uint256 _pid,
-        uint256 _allocPoint,
-        bool _withUpdate
-    ) public onlyOwner {
+    function set(uint256 _pid, uint256 _allocPoint, bool _withUpdate) public onlyOwner {
         if (_withUpdate) {
             massUpdatePools();
         }
@@ -128,19 +109,13 @@ contract FarmingJAK is Ownable {
     }
 
     // View function to see deposited LP for a user.
-    function deposited(
-        uint256 _pid,
-        address _user
-    ) external view returns (uint256) {
+    function deposited(uint256 _pid, address _user) external view returns (uint256) {
         UserInfo storage user = userInfo[_pid][_user];
         return user.amount;
     }
 
     // View function to see pending ERC20s for a user.
-    function pending(
-        uint256 _pid,
-        address _user
-    ) external view returns (uint256) {
+    function pending(uint256 _pid, address _user) external view returns (uint256) {
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][_user];
         uint256 accERC20PerShare = pool.accERC20PerShare;
