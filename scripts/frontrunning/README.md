@@ -44,7 +44,7 @@ To get started with this boilerplate, you just need to follow these simple steps
 
 ### License
 
-By [MIT licensed](./LICENSE).
+By [MIT licensed](../../LICENSE).
 
 [solidity]: https://img.shields.io/badge/Solidity-000000?style=for-the-badge&logo=solidity&logoColor=FFFFFF
 [solidityURL]: https://nextjs.org/

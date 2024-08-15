@@ -951,3 +951,121 @@ export const TokenAbi = [
     type: 'function'
   }
 ] as const
+
+export const EIP712TestAbi = [
+  {
+    inputs: [],
+    stateMutability: 'nonpayable',
+    type: 'constructor'
+  },
+  {
+    inputs: [],
+    name: 'DOMAIN_SEPARATOR',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'TEST_TYPE_HASH',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    name: 'amounts',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    name: 'nonces',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'rc',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'amount',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint8',
+        name: 'v',
+        type: 'uint8'
+      },
+      {
+        internalType: 'bytes32',
+        name: 'r',
+        type: 'bytes32'
+      },
+      {
+        internalType: 'bytes32',
+        name: 's',
+        type: 'bytes32'
+      }
+    ],
+    name: 'testEIP712',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  }
+] as const

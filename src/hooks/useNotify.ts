@@ -1,37 +1,43 @@
 import { type ReactNode, useCallback } from 'react'
-import { useToast } from '@chakra-ui/react'
+import { useToast, ToastPosition } from '@chakra-ui/react'
+import { StyleProps } from '@chakra-ui/system'
 
 interface NotifyProps {
   title: string
   message: ReactNode
+  position?: ToastPosition
+  isClosable?: boolean
+  containerStyle?: StyleProps
 }
 
 export const useNotify = () => {
   const toast = useToast()
 
   const notifySuccess = useCallback(
-    ({ title, message }: NotifyProps) => {
+    ({ title, message, position = 'top-right', isClosable = true, containerStyle }: NotifyProps) => {
       toast({
         title,
         description: message,
-        position: 'top-right',
+        position,
         status: 'success',
         duration: 10000,
-        isClosable: true
+        isClosable,
+        containerStyle
       })
     },
     [toast]
   )
 
   const notifyError = useCallback(
-    ({ title, message }: NotifyProps) => {
+    ({ title, message, position = 'top-right', isClosable = true, containerStyle }: NotifyProps) => {
       toast({
         title,
         description: message,
-        position: 'top-right',
+        position,
         status: 'error',
         duration: 10000,
-        isClosable: true
+        isClosable,
+        containerStyle
       })
     },
     [toast]
