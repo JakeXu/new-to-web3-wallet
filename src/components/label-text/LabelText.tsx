@@ -6,7 +6,7 @@ import { getEllipsisWords } from '@/utils'
 
 interface LabelTextProps extends BoxProps {
   label?: string
-  value: ReactNode | string
+  value?: ReactNode | string
   isAddress?: boolean
   copyable?: boolean
 }
@@ -18,6 +18,7 @@ const LabelText = ({
   width = 200,
   isAddress = false,
   copyable = isAddress,
+  children,
   ...props
 }: LabelTextProps) => {
   const { onCopy, setValue, hasCopied } = useClipboard(typeof value === 'string' ? value : '')
@@ -35,14 +36,22 @@ const LabelText = ({
   }
 
   return (
-    <Text {...props}>
+    <Text as="span" className="w-full" {...props}>
       {label && (
         <Text as="span" textAlign={textAlign} className="inline-block mr-6" width={width} fontSize={20} fontWeight="800">
           {`${label}: `}
         </Text>
       )}
-      <Text as="span">{v}</Text>
-      {copyable && <CopyIcon className="ml-1 cursor-pointer" _hover={{ color: 'pink' }} onClick={handleCopy} />}
+      {children ? (
+        <Text as="span" className="inline-block absolute pt-0.5 mt-px">
+          {children}
+        </Text>
+      ) : (
+        <>
+          <Text as="span">{v}</Text>
+          {copyable && <CopyIcon className="ml-1 cursor-pointer" _hover={{ color: 'pink' }} onClick={handleCopy} />}
+        </>
+      )}
     </Text>
   )
 }

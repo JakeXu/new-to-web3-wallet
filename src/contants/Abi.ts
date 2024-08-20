@@ -1069,3 +1069,600 @@ export const EIP712TestAbi = [
     type: 'function'
   }
 ] as const
+
+export const MobileAbi = [
+  {
+    inputs: [],
+    stateMutability: 'nonpayable',
+    type: 'constructor'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'oldOperator',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'newOperator',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'time',
+        type: 'uint256'
+      }
+    ],
+    name: 'OperatorUpdated',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        internalType: 'string',
+        name: 'from',
+        type: 'string'
+      },
+      {
+        indexed: false,
+        internalType: 'string',
+        name: 'to',
+        type: 'string'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'time',
+        type: 'uint256'
+      }
+    ],
+    name: 'Trace',
+    type: 'event'
+  },
+  {
+    inputs: [],
+    name: 'capacity',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'color',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'display',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'factory',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'getAllLogs',
+    outputs: [
+      {
+        components: [
+          {
+            internalType: 'uint256',
+            name: 'step',
+            type: 'uint256'
+          },
+          {
+            internalType: 'string',
+            name: 'from',
+            type: 'string'
+          },
+          {
+            internalType: 'string',
+            name: 'to',
+            type: 'string'
+          },
+          {
+            internalType: 'uint256',
+            name: 'time',
+            type: 'uint256'
+          },
+          {
+            internalType: 'address',
+            name: 'operator',
+            type: 'address'
+          }
+        ],
+        internalType: 'struct Mobile.Log[]',
+        name: '_logs',
+        type: 'tuple[]'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_start',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_end',
+        type: 'uint256'
+      }
+    ],
+    name: 'getLogs',
+    outputs: [
+      {
+        components: [
+          {
+            internalType: 'uint256',
+            name: 'step',
+            type: 'uint256'
+          },
+          {
+            internalType: 'string',
+            name: 'from',
+            type: 'string'
+          },
+          {
+            internalType: 'string',
+            name: 'to',
+            type: 'string'
+          },
+          {
+            internalType: 'uint256',
+            name: 'time',
+            type: 'uint256'
+          },
+          {
+            internalType: 'address',
+            name: 'operator',
+            type: 'address'
+          }
+        ],
+        internalType: 'struct Mobile.Log[]',
+        name: '_logs',
+        type: 'tuple[]'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'getMobileInfo',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '_serialNumber',
+        type: 'uint256'
+      },
+      {
+        internalType: 'string',
+        name: '_color',
+        type: 'string'
+      },
+      {
+        internalType: 'uint256',
+        name: '_display',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_capacity',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_steps',
+        type: 'uint256'
+      },
+      {
+        internalType: 'address',
+        name: '_operator',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_operator',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: '_serialNumber',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_display',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_capacity',
+        type: 'uint256'
+      },
+      {
+        internalType: 'string',
+        name: '_color',
+        type: 'string'
+      }
+    ],
+    name: 'initialize',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    name: 'logs',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'step',
+        type: 'uint256'
+      },
+      {
+        internalType: 'string',
+        name: 'from',
+        type: 'string'
+      },
+      {
+        internalType: 'string',
+        name: 'to',
+        type: 'string'
+      },
+      {
+        internalType: 'uint256',
+        name: 'time',
+        type: 'uint256'
+      },
+      {
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'operator',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_from',
+        type: 'string'
+      },
+      {
+        internalType: 'string',
+        name: '_to',
+        type: 'string'
+      }
+    ],
+    name: 'processAction',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'serialNumber',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'steps',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_operator',
+        type: 'address'
+      }
+    ],
+    name: 'updateOperator',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  }
+] as const
+
+export const MobileFactoryAbi = [
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'address',
+        name: 'maker',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_serialNumber',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_display',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_capacity',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'string',
+        name: '_color',
+        type: 'string'
+      },
+      {
+        indexed: false,
+        internalType: 'address',
+        name: '_mobile',
+        type: 'address'
+      }
+    ],
+    name: 'MobileCreated',
+    type: 'event'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    name: 'existMobile',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'getAllMobiles',
+    outputs: [
+      {
+        internalType: 'address[]',
+        name: '_mobiles',
+        type: 'address[]'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_start',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_end',
+        type: 'uint256'
+      }
+    ],
+    name: 'getMobiles',
+    outputs: [
+      {
+        internalType: 'address[]',
+        name: '_mobiles',
+        type: 'address[]'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'hash',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'int256',
+        name: '_serialNumber',
+        type: 'int256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_display',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_capacity',
+        type: 'uint256'
+      },
+      {
+        internalType: 'string',
+        name: '_color',
+        type: 'string'
+      }
+    ],
+    name: 'hashMobile',
+    outputs: [
+      {
+        internalType: 'address',
+        name: 'mobile',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_display',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_capacity',
+        type: 'uint256'
+      },
+      {
+        internalType: 'string',
+        name: '_color',
+        type: 'string'
+      }
+    ],
+    name: 'makeMobile',
+    outputs: [
+      {
+        internalType: 'address',
+        name: 'mobile',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    name: 'mobiles',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'totalMobile',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  }
+] as const
