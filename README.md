@@ -66,6 +66,14 @@ To get started with this boilerplate, you just need to follow these simple steps
    bun dev
    ```
 
+## Series
+- [Upgrade Contract](./scripts/upgrade/)
+- [Front Running](./scripts/frontrunning/README.md)
+- [EIP712](./contracts/eip712/README.md)
+- [Create2](./contracts/create2/README.md)
+- Uniswap V2
+  - [Add Liquidity](./contracts/uniswapv2/README-Liquidity.md)
+
 ### License
 
 By [MIT licensed](./LICENSE).
