@@ -47,7 +47,7 @@ const Card = () => {
   const [token, setToken] = useState(process.env.NEXT_PUBLIC_SEPOLIA_JTOKEN_A)
   const [percent, setPercent] = useState(50)
   const [isPending, setIsPending] = useState(false)
-  const tokenPairRef = useRef(null)
+  const tokenPairRef = useRef<{ refetch: any; balance: string }>(null)
   const { notifyError, notifySuccess } = useNotify()
   const { address } = useAccount()
   const { writeContractAsync } = useWriteContract()
