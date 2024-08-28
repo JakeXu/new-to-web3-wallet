@@ -1,6 +1,6 @@
-# Uniswap V2 - Add Liquidity
+# Uniswap V2 - Swap Token
 
-Demonstrate how to add and manipulate liquidity step by step.
+Display the default exchange ratio to calculate the number of tokens that can be obtained.
 
 [![solidity]][solidityURL]
 [![remix]][remixURL]
@@ -8,12 +8,10 @@ Demonstrate how to add and manipulate liquidity step by step.
 ## Features ⚡
 
 - [x] Demo contract
-- [x] Add Token
-- [x] Calc Liquidity
-- [x] Remove Liquidity
-- [x] Back Token
+- [x] Faucet
+- [x] Swap Token
 
-![Uniswap V2 UI](../../public/assets/screenshots/uniswapv2-add-liquidity.png)
+![Uniswap V2 UI](../../public/assets/screenshots/uniswapv2-swap-token.png)
 
 ---
 
@@ -38,7 +36,7 @@ To get started with this boilerplate, you just need to follow these simple steps
 4. Get a 2:1 tokens via the faucet button
 
 
-5. Operate in order of tabs and observe data changes to understand contract features
+5. Input the token value then swap it.
 
 ### License
 

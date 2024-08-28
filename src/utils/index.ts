@@ -1,5 +1,6 @@
 import { createWalletClient, custom, parseUnits as viemParseUnits } from 'viem'
 import { sepolia } from 'viem/chains'
+import BigNumber from 'bignumber.js'
 import { Colors, Displays, Capacities } from '@/contants/types'
 
 export const parseUnits = (ether: string, unit: number = 18) => viemParseUnits(ether, unit)
@@ -42,3 +43,15 @@ export const walletClient4Sepolia =
         })
       : null
     : null
+
+export const getAmountIn = (amountOut: string, reserveIn: string, reserveOut: string): string => {
+  return new BigNumber(1000).times(amountOut).times(reserveIn).div(new BigNumber(reserveOut).minus(amountOut).times(997).plus(1)).toFixed()
+}
+
+export const getAmountOut = (amountIn: string, reserveIn: string, reserveOut: string): string => {
+  let feeIn = new BigNumber(amountIn).times(997)
+  return feeIn
+    .times(reserveOut)
+    .div(feeIn.plus(new BigNumber(1000).times(reserveIn)))
+    .toFixed()
+}

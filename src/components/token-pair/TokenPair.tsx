@@ -15,14 +15,18 @@ const UniswapV2PairContract = {
   abi: UniswapV2PairAbi
 } as const
 
-const TokenPair = forwardRef(({}, ref) => {
+interface Props {
+  callback?: (isPending: boolean) => void
+}
+
+const TokenPair = forwardRef(({ callback }: Props, ref) => {
   const [isPending, setIsPending] = useState(false)
   const { address } = useAccount()
   const { notifyError, notifySuccess } = useNotify()
   const config = useConfig()
   const { writeContractAsync } = useWriteContract()
 
-  const { data, isFetching, refetch } = useReadContracts({
+  const { data, isFetching, isFetched, refetch } = useReadContracts({
     contracts: [
       {
         ...UniswapV2PairContract,
@@ -53,7 +57,7 @@ const TokenPair = forwardRef(({}, ref) => {
   })
 
   const { balance, totalSupply, percent, balanceA, balanceB, reserveA, reserveB } = useMemo(() => {
-    if (!data) return { balance: '0', totalSupply: '0', percent: '0' }
+    if (!data) return { balance: '0', totalSupply: '0', percent: '0', balanceA: '0', balanceB: '0', reserveA: '0', reserveB: '0' }
     const balance = data?.[0]?.result || BigInt(0)
     const totalSupply = data?.[1]?.result || BigInt(0)
     const percent = parseFloat(((balance * BigInt(10000)) / (totalSupply || BigInt(1)) / BigInt(100)).toString()).toFixed(2)
@@ -65,8 +69,14 @@ const TokenPair = forwardRef(({}, ref) => {
     return { balance: balance.toString(), totalSupply: totalSupply.toString(), percent, balanceA, balanceB, reserveA, reserveB }
   }, [data])
 
+  useEffect(() => {
+    isFetched && callback && callback(false)
+  }, [isFetched])
+
   useImperativeHandle(ref, () => ({
     balance,
+    reserveA,
+    reserveB,
     refetch
   }))
 

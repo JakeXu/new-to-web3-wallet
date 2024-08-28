@@ -9,6 +9,7 @@ interface LabelTextProps extends BoxProps {
   value?: ReactNode | string
   isAddress?: boolean
   copyable?: boolean
+  rightWidth?: string
 }
 
 const LabelText = ({
@@ -18,6 +19,7 @@ const LabelText = ({
   width = 200,
   isAddress = false,
   copyable = isAddress,
+  rightWidth,
   children,
   ...props
 }: LabelTextProps) => {
@@ -43,7 +45,7 @@ const LabelText = ({
         </Text>
       )}
       {children ? (
-        <Text as="span" className="inline-block absolute pt-0.5 mt-px">
+        <Text as="span" className="inline-block absolute pt-0.5 mt-px" w={rightWidth}>
           {children}
         </Text>
       ) : (
