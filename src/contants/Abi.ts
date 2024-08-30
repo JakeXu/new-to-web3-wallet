@@ -2654,3 +2654,283 @@ export const UniswapV2PairAbi = [
     type: 'function'
   }
 ] as const
+
+export const MultiSigWalletAbi = [
+  {
+    inputs: [
+      {
+        internalType: 'address[]',
+        name: '_owners',
+        type: 'address[]'
+      },
+      {
+        internalType: 'uint256',
+        name: '_threshold',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'nonpayable',
+    type: 'constructor'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'bytes32',
+        name: 'txHash',
+        type: 'bytes32'
+      }
+    ],
+    name: 'ExecutionFailure',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'bytes32',
+        name: 'txHash',
+        type: 'bytes32'
+      }
+    ],
+    name: 'ExecutionSuccess',
+    type: 'event'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes32',
+        name: 'dataHash',
+        type: 'bytes32'
+      },
+      {
+        internalType: 'bytes',
+        name: 'signatures',
+        type: 'bytes'
+      }
+    ],
+    name: 'checkSignatures',
+    outputs: [],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256'
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes'
+      },
+      {
+        internalType: 'uint256',
+        name: '_nonce',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: 'chainId',
+        type: 'uint256'
+      }
+    ],
+    name: 'encodeTransactionData',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32'
+      }
+    ],
+    stateMutability: 'pure',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256'
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes'
+      },
+      {
+        internalType: 'bytes',
+        name: 'signatures',
+        type: 'bytes'
+      }
+    ],
+    name: 'execTransaction',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: 'success',
+        type: 'bool'
+      }
+    ],
+    stateMutability: 'payable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    name: 'getLog',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: 'hash',
+        type: 'bytes32'
+      },
+      {
+        internalType: 'uint256',
+        name: 'time',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    name: 'isOwner',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'nonce',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'ownerCount',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    name: 'owners',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256'
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes'
+      },
+      {
+        internalType: 'uint256',
+        name: '_nonce',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: 'chainId',
+        type: 'uint256'
+      }
+    ],
+    name: 'sign',
+    outputs: [
+      {
+        internalType: 'bytes32',
+        name: '',
+        type: 'bytes32'
+      }
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'threshold',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    stateMutability: 'payable',
+    type: 'receive'
+  }
+] as const

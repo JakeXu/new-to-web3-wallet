@@ -1,6 +1,6 @@
 'use client'
 import { HStack, Heading, Link as ChakraLink, Menu, MenuButton, IconButton, MenuList, MenuItem } from '@chakra-ui/react'
-import { HamburgerIcon, RepeatIcon, ArrowLeftIcon, LinkIcon, PlusSquareIcon, AddIcon, UpDownIcon } from '@chakra-ui/icons'
+import { HamburgerIcon, RepeatIcon, ArrowLeftIcon, LinkIcon, PlusSquareIcon, AddIcon, UpDownIcon, AtSignIcon } from '@chakra-ui/icons'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -43,6 +43,9 @@ const Header = () => {
                 </ChakraLink>
                 <ChakraLink as={Link} href="/swap">
                   <MenuItem icon={<UpDownIcon />}>Swap</MenuItem>
+                </ChakraLink>
+                <ChakraLink as={Link} href="/multisig">
+                  <MenuItem icon={<AtSignIcon />}>Multi-Signature</MenuItem>
                 </ChakraLink>
               </MenuList>
             </Menu>

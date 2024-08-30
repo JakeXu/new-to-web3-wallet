@@ -6,6 +6,16 @@ require('@nomicfoundation/hardhat-chai-matchers')
 // https://hardhat.org/hardhat-chai-matchers/docs/migrate-from-waffle
 // https://hardhat.org/hardhat-chai-matchers/docs/overview
 
+// Ignore Solidity files during compilation
+const { subtask } = require('hardhat/config')
+const { TASK_COMPILE_SOLIDITY_GET_SOURCE_PATHS } = require('hardhat/builtin-tasks/task-names')
+
+subtask(TASK_COMPILE_SOLIDITY_GET_SOURCE_PATHS).setAction(async (_, __, runSuper) => {
+  const paths = await runSuper()
+
+  return paths.filter(p => !p.endsWith('.ignore.sol'))
+})
+
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   networks: {

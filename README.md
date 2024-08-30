@@ -73,6 +73,8 @@ To get started with this boilerplate, you just need to follow these simple steps
 - [Create2](./contracts/create2/README.md)
 - Uniswap V2
   - [Add Liquidity](./contracts/uniswapv2/README-Liquidity.md)
+  - [Swap](./contracts/uniswapv2/README-Swap.md)
+- [Multi-Signature Wallet](./contracts/multisig/README.md)
 
 ### License
 

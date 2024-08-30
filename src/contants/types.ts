@@ -85,3 +85,19 @@ export const Capacities = {
   '2': Capacity['128G'],
   '3': Capacity['256G']
 }
+
+export const Owner = z.object({
+  id: z.string(),
+  owner: z.string(),
+  owner_order: z.number(),
+  status: z.enum(['ACTIVE', 'INACTIVE'])
+})
+export interface Owner extends z.TypeOf<typeof Owner> {}
+
+export const Hash = z.object({
+  id: z.string(),
+  owner: z.string(),
+  hash: z.string(),
+  time: z.bigint()
+})
+export interface Hash extends z.TypeOf<typeof Hash> {}
