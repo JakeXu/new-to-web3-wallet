@@ -55,3 +55,5 @@ export const getAmountOut = (amountIn: string, reserveIn: string, reserveOut: st
     .div(feeIn.plus(new BigNumber(1000).times(reserveIn)))
     .toFixed()
 }
+
+export const sleep = (delay: number) => new Promise(resolve => setTimeout(resolve, delay))

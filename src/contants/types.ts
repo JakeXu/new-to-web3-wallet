@@ -101,3 +101,11 @@ export const Hash = z.object({
   time: z.bigint()
 })
 export interface Hash extends z.TypeOf<typeof Hash> {}
+
+export const NFT = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  image: z.string()
+})
+export interface NFT extends z.TypeOf<typeof NFT> {}

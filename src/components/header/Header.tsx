@@ -1,6 +1,16 @@
 'use client'
 import { HStack, Heading, Link as ChakraLink, Menu, MenuButton, IconButton, MenuList, MenuItem } from '@chakra-ui/react'
-import { HamburgerIcon, RepeatIcon, ArrowLeftIcon, LinkIcon, PlusSquareIcon, AddIcon, UpDownIcon, AtSignIcon } from '@chakra-ui/icons'
+import {
+  HamburgerIcon,
+  RepeatIcon,
+  ArrowLeftIcon,
+  LinkIcon,
+  PlusSquareIcon,
+  AddIcon,
+  UpDownIcon,
+  AtSignIcon,
+  CopyIcon
+} from '@chakra-ui/icons'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,7 +33,7 @@ const Header = () => {
                 New To Web3 Wallet
               </Link>
             </Heading>
-            <Menu>
+            <Menu defaultIsOpen>
               <MenuButton as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline" />
               <MenuList>
                 <ChakraLink as={Link} href="/">
@@ -46,6 +56,9 @@ const Header = () => {
                 </ChakraLink>
                 <ChakraLink as={Link} href="/multisig">
                   <MenuItem icon={<AtSignIcon />}>Multi-Signature</MenuItem>
+                </ChakraLink>
+                <ChakraLink as={Link} href="/erc721">
+                  <MenuItem icon={<CopyIcon />}>NFT (ERC-721)</MenuItem>
                 </ChakraLink>
               </MenuList>
             </Menu>
