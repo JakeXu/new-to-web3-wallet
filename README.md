@@ -75,6 +75,8 @@ To get started with this boilerplate, you just need to follow these simple steps
   - [Add Liquidity](./contracts/uniswapv2/README-Liquidity.md)
   - [Swap](./contracts/uniswapv2/README-Swap.md)
 - [Multi-Signature Wallet](./contracts/multisig/README.md)
+- [Ugly Avatars](./contracts/erc721/README.md)
+- [Lottery](./contracts/gambling/README.md)
 
 ### License
 

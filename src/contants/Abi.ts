@@ -3636,3 +3636,1095 @@ export const UglyAvatarsAbi = [
     type: 'function'
   }
 ] as const
+
+export const LotteryAbi = [
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'initialOwner',
+        type: 'address'
+      },
+      {
+        internalType: 'uint8',
+        name: '_sizeOfLotteryNumbers',
+        type: 'uint8'
+      }
+    ],
+    stateMutability: 'nonpayable',
+    type: 'constructor'
+  },
+  {
+    inputs: [],
+    name: 'InvalidInitialization',
+    type: 'error'
+  },
+  {
+    inputs: [],
+    name: 'NotInitializing',
+    type: 'error'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address'
+      }
+    ],
+    name: 'OwnableInvalidOwner',
+    type: 'error'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'account',
+        type: 'address'
+      }
+    ],
+    name: 'OwnableUnauthorizedAccount',
+    type: 'error'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'uint64',
+        name: 'version',
+        type: 'uint64'
+      }
+    ],
+    name: 'Initialized',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'lotteryId',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint16[]',
+        name: 'winningNumbers',
+        type: 'uint16[]'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'ticketSupply',
+        type: 'uint256'
+      }
+    ],
+    name: 'LotteryClose',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'lotteryId',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'ticketSupply',
+        type: 'uint256'
+      }
+    ],
+    name: 'LotteryOpen',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'minter',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256[]',
+        name: 'ticketIDs',
+        type: 'uint256[]'
+      },
+      {
+        indexed: false,
+        internalType: 'uint16[]',
+        name: 'numbers',
+        type: 'uint16[]'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'totalCost',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'discount',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'pricePaid',
+        type: 'uint256'
+      }
+    ],
+    name: 'NewMint',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'previousOwner',
+        type: 'address'
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address'
+      }
+    ],
+    name: 'OwnershipTransferred',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'lotteryId',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'leftPrize',
+        type: 'uint256'
+      }
+    ],
+    name: 'WithdrawAll',
+    type: 'event'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint16[]',
+        name: '_chosenNumbersForEachTicket',
+        type: 'uint16[]'
+      }
+    ],
+    name: 'buyLottoTicket',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_lotteryId',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_tokenId',
+        type: 'uint256'
+      }
+    ],
+    name: 'claimReward',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_lotteryId',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_numberOfTickets',
+        type: 'uint256'
+      }
+    ],
+    name: 'costToBuyTickets',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'totalCost',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint8[]',
+        name: '_prizeDistribution',
+        type: 'uint8[]'
+      },
+      {
+        internalType: 'uint256',
+        name: '_costPerTicket',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_startingTimestamp',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_closingTimestamp',
+        type: 'uint256'
+      }
+    ],
+    name: 'createNewLotto',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_lotteryId',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_seed',
+        type: 'uint256'
+      }
+    ],
+    name: 'drawWinningNumbers',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_lotteryId',
+        type: 'uint256'
+      }
+    ],
+    name: 'getLottoInfo',
+    outputs: [
+      {
+        components: [
+          {
+            internalType: 'uint256',
+            name: 'lotteryID',
+            type: 'uint256'
+          },
+          {
+            internalType: 'enum Lottery.Status',
+            name: 'lotteryStatus',
+            type: 'uint8'
+          },
+          {
+            internalType: 'uint256',
+            name: 'prizePool',
+            type: 'uint256'
+          },
+          {
+            internalType: 'uint256',
+            name: 'costPerTicket',
+            type: 'uint256'
+          },
+          {
+            internalType: 'uint8[]',
+            name: 'prizeDistribution',
+            type: 'uint8[]'
+          },
+          {
+            internalType: 'uint256',
+            name: 'startingTimestamp',
+            type: 'uint256'
+          },
+          {
+            internalType: 'uint256',
+            name: 'closingTimestamp',
+            type: 'uint256'
+          },
+          {
+            internalType: 'uint16[]',
+            name: 'winningNumbers',
+            type: 'uint16[]'
+          },
+          {
+            internalType: 'uint8[]',
+            name: 'winningDistribution',
+            type: 'uint8[]'
+          }
+        ],
+        internalType: 'struct Lottery.LottoInfo',
+        name: '',
+        type: 'tuple'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_lotteryNFT',
+        type: 'address'
+      },
+      {
+        internalType: 'address',
+        name: '_IRandomNumberGenerator',
+        type: 'address'
+      }
+    ],
+    name: 'initialize',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'lotteryId',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'owner',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'sizeOfLottery',
+    outputs: [
+      {
+        internalType: 'uint8',
+        name: '',
+        type: 'uint8'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address'
+      }
+    ],
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_lotteryId',
+        type: 'uint256'
+      }
+    ],
+    name: 'withdrawAll',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  }
+] as const
+
+export const LotteryNFTAbi = [
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_uri',
+        type: 'string'
+      },
+      {
+        internalType: 'address',
+        name: '_lotto',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'nonpayable',
+    type: 'constructor'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'sender',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'balance',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: 'needed',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256'
+      }
+    ],
+    name: 'ERC1155InsufficientBalance',
+    type: 'error'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'approver',
+        type: 'address'
+      }
+    ],
+    name: 'ERC1155InvalidApprover',
+    type: 'error'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: 'idsLength',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: 'valuesLength',
+        type: 'uint256'
+      }
+    ],
+    name: 'ERC1155InvalidArrayLength',
+    type: 'error'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      }
+    ],
+    name: 'ERC1155InvalidOperator',
+    type: 'error'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'receiver',
+        type: 'address'
+      }
+    ],
+    name: 'ERC1155InvalidReceiver',
+    type: 'error'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'sender',
+        type: 'address'
+      }
+    ],
+    name: 'ERC1155InvalidSender',
+    type: 'error'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      },
+      {
+        internalType: 'address',
+        name: 'owner',
+        type: 'address'
+      }
+    ],
+    name: 'ERC1155MissingApprovalForAll',
+    type: 'error'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'account',
+        type: 'address'
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        internalType: 'bool',
+        name: 'approved',
+        type: 'bool'
+      }
+    ],
+    name: 'ApprovalForAll',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'receiving',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'lotteryId',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'amountOfTokens',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256[]',
+        name: 'tokenIds',
+        type: 'uint256[]'
+      }
+    ],
+    name: 'InfoBatchMint',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'from',
+        type: 'address'
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256[]',
+        name: 'ids',
+        type: 'uint256[]'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256[]',
+        name: 'values',
+        type: 'uint256[]'
+      }
+    ],
+    name: 'TransferBatch',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'from',
+        type: 'address'
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'id',
+        type: 'uint256'
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256'
+      }
+    ],
+    name: 'TransferSingle',
+    type: 'event'
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: 'string',
+        name: 'value',
+        type: 'string'
+      },
+      {
+        indexed: true,
+        internalType: 'uint256',
+        name: 'id',
+        type: 'uint256'
+      }
+    ],
+    name: 'URI',
+    type: 'event'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'account',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'id',
+        type: 'uint256'
+      }
+    ],
+    name: 'balanceOf',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address[]',
+        name: 'accounts',
+        type: 'address[]'
+      },
+      {
+        internalType: 'uint256[]',
+        name: 'ids',
+        type: 'uint256[]'
+      }
+    ],
+    name: 'balanceOfBatch',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: '',
+        type: 'uint256[]'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: '_lotteryId',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint8',
+        name: '_numberOfTickets',
+        type: 'uint8'
+      },
+      {
+        internalType: 'uint16[]',
+        name: '_numbers',
+        type: 'uint16[]'
+      },
+      {
+        internalType: 'uint8',
+        name: 'sizeOfLottery',
+        type: 'uint8'
+      }
+    ],
+    name: 'batchMint',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: '',
+        type: 'uint256[]'
+      }
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_ticketID',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_lotteryId',
+        type: 'uint256'
+      }
+    ],
+    name: 'claimTicket',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool'
+      }
+    ],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_lotteryId',
+        type: 'uint256'
+      }
+    ],
+    name: 'getLotteryUsers',
+    outputs: [
+      {
+        internalType: 'address[]',
+        name: '',
+        type: 'address[]'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_ticketID',
+        type: 'uint256'
+      }
+    ],
+    name: 'getOwnerOfTicket',
+    outputs: [
+      {
+        internalType: 'address',
+        name: '',
+        type: 'address'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_ticketID',
+        type: 'uint256'
+      }
+    ],
+    name: 'getTicketClaimStatus',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_ticketID',
+        type: 'uint256'
+      }
+    ],
+    name: 'getTicketNumbers',
+    outputs: [
+      {
+        internalType: 'uint16[]',
+        name: '',
+        type: 'uint16[]'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'getTotalSupply',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_lotteryId',
+        type: 'uint256'
+      },
+      {
+        internalType: 'address',
+        name: '_user',
+        type: 'address'
+      }
+    ],
+    name: 'getUserTickets',
+    outputs: [
+      {
+        internalType: 'uint256[]',
+        name: '',
+        type: 'uint256[]'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'account',
+        type: 'address'
+      },
+      {
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      }
+    ],
+    name: 'isApprovedForAll',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'from',
+        type: 'address'
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256[]',
+        name: 'ids',
+        type: 'uint256[]'
+      },
+      {
+        internalType: 'uint256[]',
+        name: 'values',
+        type: 'uint256[]'
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes'
+      }
+    ],
+    name: 'safeBatchTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'from',
+        type: 'address'
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'id',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: 'value',
+        type: 'uint256'
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes'
+      }
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      },
+      {
+        internalType: 'bool',
+        name: 'approved',
+        type: 'bool'
+      }
+    ],
+    name: 'setApprovalForAll',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'bytes4',
+        name: 'interfaceId',
+        type: 'bytes4'
+      }
+    ],
+    name: 'supportsInterface',
+    outputs: [
+      {
+        internalType: 'bool',
+        name: '',
+        type: 'bool'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    name: 'uri',
+    outputs: [
+      {
+        internalType: 'string',
+        name: '',
+        type: 'string'
+      }
+    ],
+    stateMutability: 'view',
+    type: 'function'
+  }
+] as const

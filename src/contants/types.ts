@@ -109,3 +109,19 @@ export const NFT = z.object({
   image: z.string()
 })
 export interface NFT extends z.TypeOf<typeof NFT> {}
+
+export const LottoStatus = z.enum(['NotStarted', 'Open', 'Completed'])
+export type LottoStatus = z.infer<typeof LottoStatus>
+
+export const LottoInfo = z.object({
+  lotteryID: z.bigint(),
+  lotteryStatus: z.number(),
+  prizePool: z.bigint(),
+  costPerTicket: z.bigint(),
+  prizeDistribution: z.array(z.number()),
+  startingTimestamp: z.bigint(),
+  closingTimestamp: z.bigint(),
+  winningNumbers: z.array(z.number()),
+  winningDistribution: z.array(z.number())
+})
+export interface LottoInfo extends z.TypeOf<typeof LottoInfo> {}

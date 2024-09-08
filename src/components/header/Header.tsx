@@ -9,7 +9,8 @@ import {
   AddIcon,
   UpDownIcon,
   AtSignIcon,
-  CopyIcon
+  CopyIcon,
+  EmailIcon
 } from '@chakra-ui/icons'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Image from 'next/image'
@@ -59,6 +60,9 @@ const Header = () => {
                 </ChakraLink>
                 <ChakraLink as={Link} href="/erc721">
                   <MenuItem icon={<CopyIcon />}>NFT (ERC-721)</MenuItem>
+                </ChakraLink>
+                <ChakraLink as={Link} href="/lottery">
+                  <MenuItem icon={<EmailIcon />}>Lottery</MenuItem>
                 </ChakraLink>
               </MenuList>
             </Menu>
